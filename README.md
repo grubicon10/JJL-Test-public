@@ -259,4 +259,4 @@ Dominanz, Juggs-Differenz (zeigt Spielstil und Entwicklung)
 
 ---
 
-**Februar 2025**
+**Februar 2026**
