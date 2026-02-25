@@ -1,6 +1,8 @@
 # JJL Ranking System - Dokumentation
 
 Ein Google Sheets-basiertes Ranking-System für Teamsportarten mit wechselnden Teamzusammenstellungen, Satz-Erfassung und mehreren Rating-Systemen.
+
+Link zur aktuellen Testversion: https://docs.google.com/spreadsheets/d/1kyolOKOHhw0kEQJmkip_Zy-LHF3X5sPVXSHrkbUtJzg/edit?usp=sharing
 100% vibe-coded mit Claude
 
 ---
