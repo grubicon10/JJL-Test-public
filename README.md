@@ -25,7 +25,7 @@ Skill Estimate = Match Rating - (3 × Unsicherheit)
 Das Skill Estimate sagt: "Mit 99.7% Wahrscheinlichkeit bist du mindestens so stark."
 
 **Warum ist es die primäre Metrik?**
-Das Skill Estimate verhindert, dass Spielende mit wenigen Matches (und damit hoher Unsicherheit) das Ranking dominieren. Wer hoch im Skill Estimate steht, hat sein Rating durch Datenmenge "verdient".
+Das Skill Estimate verhindert, dass Spielende mit wenigen Matches (und damit hoher Unsicherheit) das Ranking dominieren. Wer hoch im Skill Estimate steht, hat sein Rating durch Datenmenge *verdient*.
 
 **Wann ist es nützlich?**
 - Als Haupt-Ranking (Standardsortierung)
@@ -118,29 +118,46 @@ Person A: 14 Punkte aus 20 Matches (70% Erfolgsquote)
 Person B: 12 Punkte aus 20 Matches (60% Erfolgsquote)
 → Person A hat mehr Erfolg, unabhängig von der Gegnerstärke
 
-### Ø Buchholz/Gegner und Ø Buchholz/Match
+### Ø Buchholz/Gegner
 
 **Was ist das?**
-Beide Metriken messen die Stärke deines Spielplans — also gegen wie starke Gegner du gespielt hast — als relative, vergleichbare Zahlen.
+Der klassische Buchholz-Tiebreaker aus dem Turnierschach, relativiert auf die Anzahl einzigartiger Gegner.
 
-**Wie werden sie berechnet?**
+**Wie wird es berechnet?**
 ```
 Ø Buchholz/Gegner = Summe der Wertungspunkte aller einzigartigen Gegner / Anzahl einzigartiger Gegner
-Ø Buchholz/Match  = Summe der Wertungspunkte aller einzigartigen Gegner / Anzahl gespielter Matches
 ```
 
 **Wie interpretiere ich die Zahlen?**
-Beide Werte geben die durchschnittlichen Wertungspunkte deiner Gegner an:
-- **Ø Buchholz/Gegner:** Misst rein die Qualität des Spielplans, unabhängig vom Volumen
-- **Ø Buchholz/Match:** Belohnt außerdem häufige Begegnungen mit starken Gegnern
+Der Wert entspricht den durchschnittlichen Wertungspunkten deiner Gegner. Höher = du hast gegen erfolgreichere Leute gespielt.
 
-**Warum ist das wichtig?**
-Tiebreaker bei gleichen Wertungspunkten. Zwei Personen mit je 12 Punkten sind nicht gleich stark, wenn eine gegen deutlich stärkere Gegner gespielt hat.
+**Wann ist es nützlich?**
+Als klassischer Tiebreaker bei gleichen Wertungspunkten, vergleichbar mit traditionellen Turniersystemen.
 
 **Beispiel:**
 Person A: 12 Wertungspunkte, Ø Buchholz/Gegner 8.5 → hat gegen starke Gegner gespielt
 Person B: 12 Wertungspunkte, Ø Buchholz/Gegner 5.2 → hat gegen schwächere Gegner gespielt
 → Person A sollte im Ranking höher stehen
+
+### Ø Gegner Skill Estimate
+
+**Was ist das?**
+Eine qualitativ stärkere Messung der Spielplanstärke als Buchholz/Gegner. Statt der einfachen Wertungspunkte wird das Skill Estimate jedes Gegners verwendet — also dessen verlässlich geschätzte Mindeststärke.
+
+**Wie wird es berechnet?**
+```
+Ø Gegner Skill Estimate = Summe der Skill Estimates aller einzigartigen Gegner / Anzahl einzigartiger Gegner
+```
+
+**Warum ist das besser als Buchholz/Gegner?**
+Wertungspunkte ignorieren die Stärke der Gegner deiner Gegner. Das Skill Estimate hingegen berücksichtigt rekursiv die gesamte Matchhistorie und gewichtet zudem Gegner mit wenigen Matches geringer (da ihr Skill Estimate durch die höhere Unsicherheit niedriger ausfällt). Es ist damit eine fairere und aussagekräftigere Messung der tatsächlichen Gegnerqualität.
+
+**Wie interpretiere ich die Zahlen?**
+Die Skala entspricht der Skill Estimate-Skala (Startwert 1450, da 2500 - 3×350). Höher = du hast gegen stärkere und verlässlicher eingeschätzte Gegner gespielt.
+
+**Beispiel:**
+Person A: Ø Gegner Skill Estimate 2200 → hat gegen etablierte, starke Spielende gespielt
+Person B: Ø Gegner Skill Estimate 1600 → hat gegen neue oder schwächere Spielende gespielt
 
 ### Durchschnittliche Dominanz
 
@@ -160,7 +177,7 @@ Der Wert liegt zwischen -1 und +1:
 - **-0.20 bis -0.40:** Du verlierst meist deutlich
 
 **Warum ist das wichtig?**
-Die Dominanz zeigt die Qualität deiner Siege/Niederlagen. Sie beeinflusst auch leicht die Rating-Änderungen (deutliche Siege bringen etwas mehr Punkte, knappe Niederlagen kosten etwas weniger).
+Die Dominanz zeigt die Qualität deiner Siege/Niederlagen. Sie beeinflusst auch leicht die Rating-Änderungen — und zwar symmetrisch: ein dominanter Sieg bringt mehr Punkte, eine deutliche Niederlage kostet mehr, unabhängig davon welches Team in der Ergebnistabelle als "Team A" eingetragen war.
 
 **Beispiel:**
 Person A: Match Rating 2520, Dominanz +0.22 → Spielt sehr souverän
@@ -194,12 +211,12 @@ Das Rankings-Tab zeigt alle Metriken in einer übersichtlichen Tabelle, sortiert
 | Unsicherheit | Wie stabil ist das Rating? | Niedriger |
 | ELO | Alternative Metrik | Höher |
 | Ø Dominanz | Wie deutlich gewinnst/verlierst du? | Positiver |
-| Ø Buchholz/Gegner | Durchschn. Stärke einzigartiger Gegner | Höher bei gleichen Wertungspunkten |
-| Ø Buchholz/Match | Spielplanstärke relativ zu Matchanzahl | Höher bei gleichen Wertungspunkten |
+| Ø Buchholz/Gegner | Klassischer Tiebreaker (Ø Wertungspunkte der Gegner) | Höher bei gleichen Wertungspunkten |
+| Ø Gegner Skill Estimate | Qualitativ stärkere Spielplanmessung | Höher bei gleichen Wertungspunkten |
 | S | Siege | Mehr |
 | U | Unentschieden | — |
 | N | Niederlagen | Weniger |
-| Erfolgsquote % | Erfolgsquote (Siege + 0.5×Unentschieden) | Höher |
+| Erfolgsquote % | (Siege + 0.5×Unentschieden) / Matches | Höher |
 | Wertungspunkte | Einfache Erfolgsmetrik | Höher |
 | Juggs +/- | Erzielte/erhaltene Punkte | Positive Differenz |
 | Diff | Juggs-Saldo | Positiver |
@@ -221,8 +238,8 @@ Du hast gegen laut Datenlage schwächere Teams gewonnen. Das System erwartet, da
 **Mein Match Rating ist höher als mein ELO. Warum?**
 Beide Systeme berechnen sich leicht unterschiedlich. Der Unterschied sollte aber klein sein (<50 Punkte). Größere Abweichungen können bei hoher Unsicherheit auftreten.
 
-**Ich habe eine höhere Siegquote als jemand anderes, aber niedrigeres Rating. Warum?**
-Du hast wahrscheinlich gegen laut Datenlage schwächere Teams gespielt. Das Rating berücksichtigt die Gegnerstärke, die Siegquote nicht.
+**Ich habe eine höhere Erfolgsquote als jemand anderes, aber niedrigeres Rating. Warum?**
+Du hast wahrscheinlich gegen laut Datenlage schwächere Teams gespielt. Das Rating berücksichtigt die Gegnerstärke, die Erfolgsquote nicht.
 
 **Was ist ein gutes Skill Estimate?**
 Das hängt von deiner Aktivität ab. Nach 20+ Matches sollte das Skill Estimate etwa 150 Punkte unter deinem Match Rating liegen. Größere Abstände bedeuten hohe Unsicherheit.
@@ -242,7 +259,10 @@ Match Rating, weil es die Gegnerstärke berücksichtigt. Wertungspunkte sind nur
 Nein. Siege gegen Schwächere bringen sehr wenige Punkte, Niederlagen gegen sie kosten aber viele. Das System ist Zero-Sum und versucht Farming-Effekte zu verhindern.
 
 **Warum haben zwei Personen mit gleichen Wertungspunkten unterschiedliche Ratings?**
-Weil sie gegen unterschiedlich starke Gegner gespielt haben. Die Person mit höherem Rating hat gegen stärkere Gegner gespielt (siehe Buchholz).
+Weil sie gegen unterschiedlich starke Gegner gespielt haben. Die Person mit höherem Rating hat gegen stärkere Gegner gespielt (siehe Buchholz/Gegner und Ø Gegner Skill Estimate).
+
+**Was ist der Unterschied zwischen Ø Buchholz/Gegner und Ø Gegner Skill Estimate?**
+Buchholz/Gegner verwendet die einfachen Wertungspunkte der Gegner als Stärkemaß — gut für klassische Turniervergleiche. Ø Gegner Skill Estimate verwendet das Skill Estimate der Gegner, das sowohl deren gesamte Matchhistorie als auch die Verlässlichkeit ihres Ratings einbezieht. Letzteres ist die aussagekräftigere Metrik.
 
 ---
 
@@ -257,8 +277,13 @@ Skill Estimate (verhindert Überschätzung neuer Spielender)
 **Für Turniere mit wenigen Matches:**
 Wertungspunkte + Ø Buchholz/Gegner (klassisches Turnier-System)
 
+**Für Spielplan-Analyse:**
+Ø Gegner Skill Estimate (qualitativ stärkste Messung der Gegnerstärke)
+
 **Für Motivations-Rankings:**
-Siegquote oder Wertungspunkte (einfach zu verstehen)
+Erfolgsquote oder Wertungspunkte (einfach zu verstehen)
 
 **Für Detail-Analysen:**
 Dominanz, Juggs-Differenz (zeigt Spielstil und Entwicklung)
+
+---
