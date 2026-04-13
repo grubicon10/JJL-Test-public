@@ -25,7 +25,7 @@ Skill Estimate = Match Rating - (3 × Unsicherheit)
 Das Skill Estimate sagt: "Mit 99.7% Wahrscheinlichkeit bist du mindestens so stark."
 
 **Warum ist es die primäre Metrik?**
-Das Skill Estimate verhindert, dass Spielende mit wenigen Matches (und damit hoher Unsicherheit) das Ranking dominieren. Wer hoch im Skill Estimate steht, hat sein Rating durch Datenmenge *verdient*.
+Das Skill Estimate verhindert, dass Spielende mit wenigen Matches (und damit hoher Unsicherheit) das Ranking dominieren. Wer hoch im Skill Estimate steht, hat sein Rating durch Datenmenge "verdient".
 
 **Wann ist es nützlich?**
 - Als Haupt-Ranking (Standardsortierung)
