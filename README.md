@@ -199,7 +199,7 @@ Das Rankings-Tab zeigt alle Metriken in einer übersichtlichen Tabelle, sortiert
 | S | Siege | Mehr |
 | U | Unentschieden | — |
 | N | Niederlagen | Weniger |
-| Siegquote % | Erfolgsquote (Siege + 0.5×Unentschieden) | Höher |
+| Erfolgsquote % | Erfolgsquote (Siege + 0.5×Unentschieden) | Höher |
 | Wertungspunkte | Einfache Erfolgsmetrik | Höher |
 | Juggs +/- | Erzielte/erhaltene Punkte | Positive Differenz |
 | Diff | Juggs-Saldo | Positiver |
